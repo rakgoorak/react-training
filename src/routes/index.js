@@ -6,7 +6,7 @@ function Router() {
       <Route path="/" element={<Layout />}>
         <Route index element={<Home />} />
         <Route path="../pages/About" element={<About />} />
-        <Route path="../pages/Dashboard" element={<Dashboard />} />
+        <Route path="../pages/Dashboard/Dashboard.js" element={<Dashboard />} />
 
         {/* Using path="*"" means "match anything", so this route
                 acts like a catch-all for URLs that we don't have explicit

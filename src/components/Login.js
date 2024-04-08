@@ -2,9 +2,9 @@ import React, { useState } from 'react';
 import './Login.css';
 import { Grid, TextField, Button, Container, Avatar, Typography, Link } from '@mui/material';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
-import user_icon from '../Assets/person.png';
 import MailIcon from '@mui/icons-material/Mail';
 import LockIcon from '@mui/icons-material/Lock';
+import PersonIcon from '@mui/icons-material/Person';
 
 const Login = () => {
     const [action, setAction] = useState("Login");
@@ -28,16 +28,16 @@ const Login = () => {
                 <Grid item xs={12}>
                     <div className='inputs'>
                         {action === "Login" ? <div></div> : <div className='input'>
-                            <img src={user_icon} alt="" />
+                            {<PersonIcon/>}
                             <TextField type="text" placeholder='Name' fullWidth />
                         </div>}
 
                         <div className='input'>
-                            <Button startIcon ={<MailIcon/>}/>
+                            {<MailIcon/>}
                             <TextField type="email" placeholder='Email' fullWidth />
                         </div>
                         <div className='input'>
-                            <Button startIcon ={<LockIcon/>}/>
+                            {<LockIcon/>}
                             <TextField type="password" placeholder='Password' fullWidth />
                         </div>
                     </div>
