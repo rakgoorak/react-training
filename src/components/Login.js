@@ -3,8 +3,8 @@ import './Login.css';
 import { Grid, TextField, Button, Container, Avatar, Typography, Link } from '@mui/material';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import user_icon from '../Assets/person.png';
-import email_icon from '../Assets/email.png';
-import password_icon from '../Assets/password.png';
+import MailIcon from '@mui/icons-material/Mail';
+import LockIcon from '@mui/icons-material/Lock';
 
 const Login = () => {
     const [action, setAction] = useState("Login");
@@ -33,11 +33,11 @@ const Login = () => {
                         </div>}
 
                         <div className='input'>
-                            <img src={email_icon} alt="" />
+                            <Button startIcon ={<MailIcon/>}/>
                             <TextField type="email" placeholder='Email' fullWidth />
                         </div>
                         <div className='input'>
-                            <img src={password_icon} alt="" />
+                            <Button startIcon ={<LockIcon/>}/>
                             <TextField type="password" placeholder='Password' fullWidth />
                         </div>
                     </div>
