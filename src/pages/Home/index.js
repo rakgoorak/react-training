@@ -49,7 +49,7 @@ function Home() {
     //
   };
 
-  return <div></div>;
+  return <App />;
 }
 
 // functional => return variable
@@ -139,7 +139,12 @@ function App() {
     return <div>{record.value}</div>;
   };
 
-  return <LongFnCompoent callback={onCallback} callbackJSX={onCallbackJSX} />;
+  return (
+    <div>
+      Home
+      <LongFnCompoent callback={onCallback} callbackJSX={onCallbackJSX} />
+    </div>
+  );
 }
 
 export default Home;

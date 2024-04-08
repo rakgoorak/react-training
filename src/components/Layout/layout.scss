@@ -1,0 +1,17 @@
+.navbar{
+    display: flex;
+    width:  100%;
+    border-bottom: 1px solid #000;
+    background-color: #ccc;
+
+    .navbar-menu{
+        display: flex;
+    }
+    
+    .navbar-menu-item{
+        padding: 12px 24px;
+        border-left: 1px solid #000;
+    }
+}
+
+// .navbar .navbar-menu {}

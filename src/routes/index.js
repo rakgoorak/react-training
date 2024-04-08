@@ -1,17 +1,17 @@
 import { Route, Routes } from "react-router-dom";
+import Home from "../pages/Home";
+import NoMatch404 from "../pages/NotFound";
+import Login from "../pages/Login";
+import Layout from "../components/Layout";
 
 function Router() {
   return (
     <Routes>
-      <Route path="/" element={<Layout />}>
-        <Route index element={<Home />} />
-        <Route path="about" element={<About />} />
-        <Route path="dashboard" element={<Dashboard />} />
-
-        {/* Using path="*"" means "match anything", so this route
-                acts like a catch-all for URLs that we don't have explicit
-                routes for. */}
-        <Route path="*" element={<NoMatch />} />
+      <Route element={<Layout />}>
+        <Route path="/" element={<Home />} />
+        <Route path="/home" element={<Home />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="*" element={<NoMatch404 />} />
       </Route>
     </Routes>
   );
