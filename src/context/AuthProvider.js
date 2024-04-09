@@ -4,9 +4,11 @@ import { PROFILE_LIST } from "../mockData/loginProfile";
 const AuthContext = createContext();
 
 function AuthProvider({ children }) {
+  
+
   const [state, setState] = useState({
     isLogin: false,
-    profile: {},
+    profile: null,
   });
   const authorize = (email, password) => {
     const profile = PROFILE_LIST.find(
@@ -15,19 +17,29 @@ function AuthProvider({ children }) {
 
     if (!profile) {
       // remove localStorage
+      localStorage.removeItem("profile");
       return alert("login fail");
+    } else {
+
+      localStorage.setItem("profile", JSON.stringify(profile));
+      setState({ isLogin:true, profile: profile });
+      // set localStorage
+      alert("login success");
     }
 
-    // set localStorage
-    alert("login success");
   };
 
-  const onLogout = () => {};
+  const onLogout = () => {
+    localStorage.removeItem("profile");
+    setState({ isLogin: false, profile: null });
+  };
 
   useEffect(() => {
-    const getProfile = localStorage.getItem("localStorage name");
+    const getProfile = localStorage.getItem("profile");
     if (getProfile) {
       // set profile
+      const parsedProfile=JSON.parse(getProfile);
+      setState({ isLogin: true, profile: parsedProfile });
     }
   }, []);
 
@@ -37,6 +49,7 @@ function AuthProvider({ children }) {
         isLogin: state.isLogin,
         profile: state.profile,
         onLogin: authorize,
+        onLogout: onLogout,
       }}
     >
       {children}

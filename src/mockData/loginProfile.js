@@ -6,6 +6,13 @@ const PROFILE_LIST = [
       firstName: "Alice",
       lastName: "Elzen",
     },
+    {
+      email: "patiphan@gmail.com",
+      password: "123456789",
+      userName: "user",
+      firstName: "Patiphan",
+      lastName: "Wilaiphit",
+    },
   ];
   
   export { PROFILE_LIST };
