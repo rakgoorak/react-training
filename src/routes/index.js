@@ -1,17 +1,21 @@
 import { Route, Routes } from "react-router-dom";
+import Layout from "../components/Layout"
+import Login from "../pages/Login"
+import Home from "../pages/Home"
+import NoMatch404 from "../pages/NoMatch404"
+import Dashboard from "../pages/Dashboard";
+import About from "../pages/About";
 
 function Router() {
   return (
     <Routes>
-      <Route path="/" element={<Layout />}>
-        <Route index element={<Home />} />
-        <Route path="../pages/About" element={<About />} />
-        <Route path="../pages/Dashboard/Dashboard.js" element={<Dashboard />} />
-
-        {/* Using path="*"" means "match anything", so this route
-                acts like a catch-all for URLs that we don't have explicit
-                routes for. */}
-        <Route path="*" element={<NoMatch />} />
+      <Route element={<Layout />}>
+        <Route path="/" element={<Home />} />
+        <Route path="/home" element={<Home />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/about" element={<About />} />
+        <Route path="*" element={<NoMatch404 />} />
       </Route>
     </Routes>
   );
