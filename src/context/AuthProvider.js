@@ -1,5 +1,6 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import { PROFILE_LIST } from "../mockData/loginProfile";
+import { Navigate } from "react-router-dom";
 
 const AuthContext = createContext();
 
@@ -9,6 +10,7 @@ function AuthProvider({ children }) {
   const [state, setState] = useState({
     isLogin: false,
     profile: null,
+    redirectToProfile: false,
   });
   const authorize = (email, password) => {
     const profile = PROFILE_LIST.find(
@@ -22,7 +24,7 @@ function AuthProvider({ children }) {
     } else {
 
       localStorage.setItem("profile", JSON.stringify(profile));
-      setState({ isLogin:true, profile: profile });
+      setState({ isLogin: true, profile: profile, redirectToProfile: true });
       // set localStorage
       alert("login success");
     }
@@ -43,6 +45,8 @@ function AuthProvider({ children }) {
     }
   }, []);
 
+  const { redirectToProfile } = state;
+
   return (
     <AuthContext.Provider
       value={{
@@ -53,6 +57,7 @@ function AuthProvider({ children }) {
       }}
     >
       {children}
+      {redirectToProfile && <Navigate to="/profile" />}
     </AuthContext.Provider>
   );
 }
