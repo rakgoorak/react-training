@@ -2,7 +2,7 @@ import { Link, Outlet, useNavigate } from "react-router-dom";
 
 import "./layout.scss";
 
-function Layout() {
+function LayoutV2({ children }) {
   const navigate = useNavigate();
   return (
     <>
@@ -21,9 +21,9 @@ function Layout() {
           </div>
         </div>
       </nav>
-      <Outlet />
+      {children}
     </>
   );
 }
 
-export default Layout;
+export default LayoutV2;

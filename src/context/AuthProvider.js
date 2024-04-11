@@ -8,6 +8,8 @@ function AuthProvider({ children }) {
     isLogin: false,
     profile: {},
   });
+  const [count, setCount] = useState(0);
+  //
   const authorize = (email, password) => {
     const profile = PROFILE_LIST.find(
       (f) => f.email === email && f.password === password
