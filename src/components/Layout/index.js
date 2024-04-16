@@ -27,7 +27,9 @@ function Layout() {
               <Link to={"/login"}>Login</Link>
             </div>
           )}
+          <div className="navbar-menu-dropdown">
           {isLogin && <ProfileDropdown />}
+          </div>
         </div>
       </nav>
       <Outlet />

@@ -1,4 +1,3 @@
-import catProfileImage from "../assets/images/cat.JPG";
 
 const PROFILE_LIST = [
     {
@@ -14,7 +13,6 @@ const PROFILE_LIST = [
       userName: "user",
       firstName: "Patiphan",
       lastName: "Wilaiphit",
-      picture: catProfileImage,
     },
   ];
   
