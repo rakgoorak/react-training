@@ -14,9 +14,9 @@ function Router() {
   return (
     <Routes>
       <Route element={<Layout />}>
-        <Route path="/" element={isLogin ? <Home /> : <Navigate to="/login" />} />
+        <Route path="/home" element={<Home />}/>
         <Route path="/login" element={<Login />} />
-        <Route path="/dashboard" element={isLogin ? <Dashboard /> : <Navigate to="/login" />} />
+        <Route path="/dashboard" element={<Dashboard />}/>
         <Route path="/about" element={<About />} />
         <Route path="/profile" element={isLogin ? <Profile /> : <Navigate to="/login" />} />
         <Route path="*" element={<NoMatch404 />} />

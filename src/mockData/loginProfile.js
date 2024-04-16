@@ -1,3 +1,5 @@
+import catProfileImage from "../assets/images/cat.JPG";
+
 const PROFILE_LIST = [
     {
       email: "master@gmail.com",
@@ -12,6 +14,7 @@ const PROFILE_LIST = [
       userName: "user",
       firstName: "Patiphan",
       lastName: "Wilaiphit",
+      picture: catProfileImage,
     },
   ];
   
