@@ -15,6 +15,9 @@ function LayoutV2({ children }) {
             <Link to={"/about-effect"}>Effect</Link>
           </div>
           <div className="navbar-menu-item">
+            <Link to={"/animal"}>Animal</Link>
+          </div>
+          <div className="navbar-menu-item">
             <div onClick={() => navigate("/login")} to={"/login"}>
               Login
             </div>

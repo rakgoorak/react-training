@@ -5,12 +5,20 @@ import Login from "../pages/Login";
 import Layout from "../components/Layout";
 import AboutEffect from "../pages/AboutEffect";
 import LayoutV2 from "../components/Layout/layoutV2";
+import Animal from "../pages/Animal";
 
 function Router() {
   return (
     <Routes>
       {/* <Route element={<Layout />}> */}
-      <Route path="/" element={<Home />} />
+      <Route
+        path="/"
+        element={
+          <LayoutV2>
+            <Home />
+          </LayoutV2>
+        }
+      />
       <Route
         path="/home"
         element={
@@ -32,6 +40,14 @@ function Router() {
         element={
           <LayoutV2>
             <AboutEffect />
+          </LayoutV2>
+        }
+      />
+      <Route
+        path="/Animal"
+        element={
+          <LayoutV2>
+            <Animal />
           </LayoutV2>
         }
       />
