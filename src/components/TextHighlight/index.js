@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { Fragment, useEffect, useState } from "react";
 
 function TextHighlight({ text = "", textHighlight = "" }) {
   const [highlight, setHighlight] = useState({
@@ -7,16 +7,9 @@ function TextHighlight({ text = "", textHighlight = "" }) {
     highlight: "",
   });
 
-  //   Aardvark
-  // aa=> prefix:'',subfix:'rdvark',highlight:'Aa'
   useEffect(() => {
     const handleChange = () => {
-      //   console.log("text => ", text);
-      //   console.log("textHighlight => ", textHighlight);
       const indexOf = text.toLowerCase().indexOf(textHighlight.toLowerCase());
-      const x = text.substring(0, indexOf);
-      //   console.log("indexOf => ", indexOf);
-      //   console.log("x => ", x);
 
       let n = { ...highlight };
       // prefix
@@ -41,7 +34,6 @@ function TextHighlight({ text = "", textHighlight = "" }) {
       setHighlight((prev) => {
         return { ...prev, ...n };
       });
-      console.log("n => ", n);
     };
     handleChange();
   }, [textHighlight]);
@@ -59,30 +51,90 @@ function TextHighlight({ text = "", textHighlight = "" }) {
   );
 }
 function TextHighlightV2({ text = "", textHighlight = "" }) {
-  const [highlight, setHighlight] = useState();
+  const [highlight, setHighlight] = useState([]);
 
-  //   Aardvark
-  // aa=> prefix:'',subfix:'rdvark',highlight:'Aa'
+  const searchTextHighlight = (value) => {
+    const indexOf = value.toLowerCase().indexOf(textHighlight.toLowerCase());
+
+    let n = { prefix: "", subfix: "", highlight: "" };
+    // prefix
+    if (indexOf <= 0) {
+      n.prefix = "";
+    } else {
+      n.prefix = text.substring(0, indexOf);
+    }
+    // subfix
+    if (indexOf + 1 === text.length) {
+      n.subfix = "";
+    } else {
+      n.subfix = text.substring(indexOf + textHighlight.length, text.length);
+    }
+    //   highlight
+    if (!textHighlight) {
+      n.highlight = "";
+    } else {
+      n.highlight = text.substring(indexOf, indexOf + textHighlight.length);
+    }
+
+    return n;
+  };
+
   useEffect(() => {
-    const handleChange = () => {
-      const indexOf = text.toLowerCase().indexOf(textHighlight.toLowerCase());
-      //   const x = text.substring(0, indexOf);
-      const n = text.toLowerCase().split(textHighlight.toLowerCase());
-      console.log("n => ", n);
+    let u = [];
+    console.log("value => ", text);
+    const handleChange = (value = "") => {
+      const firstIndexOf = value
+        .toLowerCase()
+        .indexOf(textHighlight.toLowerCase());
+      const lastIndexOf = value
+        .toLowerCase()
+        .lastIndexOf(textHighlight.toLowerCase());
+
+      // Amazon Rainforest Frog
+      // Amazo
+
+      // setHighlight((prev) => {
+      //   return [...prev, searchTextHighlight(x)];
+      // });
+
+      if (firstIndexOf === lastIndexOf) {
+        u = [...u, searchTextHighlight(value)];
+      } else {
+        const x = value.substring(0, firstIndexOf + textHighlight.length);
+
+        u = [...u, searchTextHighlight(x)];
+
+        handleChange(value.substring(x.length, value.length));
+      }
+      // setHighlight((prev) => {
+      //   return [...prev, searchTextHighlight(value)];
+      // });
+
+      // if (firstIndexOf !== lastIndexOf) {
+      //   handleChange(value.substring(0, firstIndexOf + textHighlight.length));
+      // }
     };
-    handleChange();
+
+    setHighlight([...u]);
+    handleChange(text);
+    // handleChange("Amazon Rainforest Frog");
+
+    return () => setHighlight([]);
   }, [textHighlight]);
 
   if (!textHighlight) return <div>{text}</div>;
 
   return (
     <div>
-      {/* {highlight.m} */}
-      {/* <span>{highlight.prefix}</span>
-      <div style={{ display: "inline-block", backgroundColor: "#f00" }}>
-        {highlight.highlight}
-      </div>
-      <span>{highlight.subfix}</span> */}
+      {highlight.map((item, index) => (
+        <Fragment key={index}>
+          <span>{item.prefix}</span>
+          <div style={{ display: "inline-block", backgroundColor: "#f00" }}>
+            {item.highlight}
+          </div>
+          <span>{item.subfix}</span>
+        </Fragment>
+      ))}
     </div>
   );
 }

@@ -19,6 +19,15 @@ function Animal() {
   };
 
   useEffect(() => {
+    const x = "asdgiaouteaxa";
+
+    const f = x.indexOf("a");
+    console.log("f => ", f);
+    const l = x.lastIndexOf("a");
+    console.log("l => ", l);
+    const z = x.split("a");
+    console.log("z => ", z);
+
     const init = async () => {
       const res = await axios
         .get(
@@ -38,6 +47,7 @@ function Animal() {
   }, []);
   return (
     <div>
+      {/* <TextHighlightV2 textHighlight="o" /> */}
       <AutoComplete data={animalList} onFilter={searchAnimal} />
       <table border={1}>
         <thead>
