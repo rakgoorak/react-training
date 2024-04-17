@@ -139,6 +139,23 @@ function App() {
     return <div>{record.value}</div>;
   };
 
+  useEffect(() => {
+    const init = async () => {
+      const x = await axios
+        .get(
+          "https://raw.githubusercontent.com/khawkriab/animal-database/main/animal-list.json",
+          {
+            headers: { "Content-Type": "application/json" },
+          }
+        )
+        .then(({ data }) => data)
+        .catch((err) => console.error("err => ", err));
+      console.log("x => ", x);
+    };
+
+    init();
+  }, []);
+
   return (
     <div>
       Home
