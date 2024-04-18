@@ -1,4 +1,4 @@
-import { Fragment, useEffect, useState } from "react";
+import { Fragment, useEffect, useRef, useState } from "react";
 
 function TextHighlight({ text = "", textHighlight = "" }) {
   const [highlight, setHighlight] = useState({
@@ -52,6 +52,7 @@ function TextHighlight({ text = "", textHighlight = "" }) {
 }
 function TextHighlightV2({ text = "", textHighlight = "" }) {
   const [highlight, setHighlight] = useState([]);
+  const highlightRef = useRef([]);
 
   const searchTextHighlight = (value) => {
     const indexOf = value.toLowerCase().indexOf(textHighlight.toLowerCase());
@@ -61,19 +62,19 @@ function TextHighlightV2({ text = "", textHighlight = "" }) {
     if (indexOf <= 0) {
       n.prefix = "";
     } else {
-      n.prefix = text.substring(0, indexOf);
+      n.prefix = value.substring(0, indexOf);
     }
     // subfix
-    if (indexOf + 1 === text.length) {
+    if (indexOf + 1 === value.length) {
       n.subfix = "";
     } else {
-      n.subfix = text.substring(indexOf + textHighlight.length, text.length);
+      n.subfix = value.substring(indexOf + textHighlight.length, text.length);
     }
     //   highlight
     if (!textHighlight) {
       n.highlight = "";
     } else {
-      n.highlight = text.substring(indexOf, indexOf + textHighlight.length);
+      n.highlight = value.substring(indexOf, indexOf + textHighlight.length);
     }
 
     return n;
@@ -86,34 +87,20 @@ function TextHighlightV2({ text = "", textHighlight = "" }) {
       const firstIndexOf = value.toLowerCase().indexOf(textHighlight.toLowerCase());
       const lastIndexOf = value.toLowerCase().lastIndexOf(textHighlight.toLowerCase());
 
-      // Amazon Rainforest Frog
-      // Amazo
-
-      // setHighlight((prev) => {
-      //   return [...prev, searchTextHighlight(x)];
-      // });
-
       if (firstIndexOf === lastIndexOf) {
-        u = [...u, searchTextHighlight(value)];
+        highlightRef.current = [...highlightRef.current, searchTextHighlight(value)];
       } else {
         const x = value.substring(0, firstIndexOf + textHighlight.length);
 
-        u = [...u, searchTextHighlight(x)];
+        highlightRef.current = [...highlightRef.current, searchTextHighlight(x)];
 
-        handleChange(value.substring(firstIndexOf + textHighlight.length));
+        handleChange(value.substring(x.length + value.length));
       }
-      // setHighlight((prev) => {
-      //   return [...prev, searchTextHighlight(value)];
-      // });
-
-      // if (firstIndexOf !== lastIndexOf) {
-      //   handleChange(value.substring(0, firstIndexOf + textHighlight.length));
-      // }
     };
 
     setHighlight([...u]);
     handleChange(text);
-    // handleChange("Amazon Rainforest Frog");
+    highlightRef.current=[...u];
 
     return () => setHighlight([]);
   }, [textHighlight]);
@@ -125,7 +112,7 @@ function TextHighlightV2({ text = "", textHighlight = "" }) {
       {highlight.map((item, index) => (
         <Fragment key={index}>
           <span>{item.prefix}</span>
-          <div style={{ display: "inline-block", backgroundColor: "#f00" }}>
+          <div style={{ display: "inline-block", backgroundColor: "#ff0" }}>
             {item.highlight}
           </div>
           <span>{item.subfix}</span>
