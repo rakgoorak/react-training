@@ -1,4 +1,4 @@
-import { Fragment, useEffect, useState } from "react";
+import { Fragment, useEffect, useRef, useState } from "react";
 
 function TextHighlight({ text = "", textHighlight = "" }) {
   const [highlight, setHighlight] = useState({
@@ -56,32 +56,33 @@ function TextHighlightV2({ text = "", textHighlight = "" }) {
   const searchTextHighlight = (value) => {
     const indexOf = value.toLowerCase().indexOf(textHighlight.toLowerCase());
 
-    let n = { prefix: "", subfix: "", highlight: "" };
+    let temp = { prefix: "", subfix: "", highlight: "" };
     // prefix
     if (indexOf <= 0) {
-      n.prefix = "";
+      temp.prefix = "";
     } else {
-      n.prefix = text.substring(0, indexOf);
+      temp.prefix = value.substring(0, indexOf);
     }
     // subfix
-    if (indexOf + 1 === text.length) {
-      n.subfix = "";
+    if (indexOf + 1 === value.length) {
+      temp.subfix = "";
     } else {
-      n.subfix = text.substring(indexOf + textHighlight.length, text.length);
+      temp.subfix = value.substring(
+        indexOf + textHighlight.length,
+        value.length
+      );
     }
     //   highlight
     if (!textHighlight) {
-      n.highlight = "";
+      temp.highlight = "";
     } else {
-      n.highlight = text.substring(indexOf, indexOf + textHighlight.length);
+      temp.highlight = value.substring(indexOf, indexOf + textHighlight.length);
     }
 
-    return n;
+    return temp;
   };
 
   useEffect(() => {
-    let u = [];
-    console.log("value => ", text);
     const handleChange = (value = "") => {
       const firstIndexOf = value
         .toLowerCase()
@@ -90,34 +91,24 @@ function TextHighlightV2({ text = "", textHighlight = "" }) {
         .toLowerCase()
         .lastIndexOf(textHighlight.toLowerCase());
 
-      // Amazon Rainforest Frog
-      // Amazo
-
-      // setHighlight((prev) => {
-      //   return [...prev, searchTextHighlight(x)];
-      // });
-
       if (firstIndexOf === lastIndexOf) {
-        u = [...u, searchTextHighlight(value)];
+        setHighlight((prev) => {
+          return [...prev, searchTextHighlight(value)];
+        });
       } else {
-        const x = value.substring(0, firstIndexOf + textHighlight.length);
-
-        u = [...u, searchTextHighlight(x)];
-
-        handleChange(value.substring(x.length, value.length));
+        const firstOfText = value.substring(
+          0,
+          firstIndexOf + textHighlight.length
+        );
+        const nextOfText = value.substring(firstOfText.length, value.length);
+        setHighlight((prev) => {
+          return [...prev, searchTextHighlight(firstOfText)];
+        });
+        handleChange(nextOfText);
       }
-      // setHighlight((prev) => {
-      //   return [...prev, searchTextHighlight(value)];
-      // });
-
-      // if (firstIndexOf !== lastIndexOf) {
-      //   handleChange(value.substring(0, firstIndexOf + textHighlight.length));
-      // }
     };
 
-    setHighlight([...u]);
     handleChange(text);
-    // handleChange("Amazon Rainforest Frog");
 
     return () => setHighlight([]);
   }, [textHighlight]);
