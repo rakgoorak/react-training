@@ -1,4 +1,4 @@
-import react from "react";
+import React from "react";
 import { useTableList } from "./TableListProvider";
 
 function Pagination() {
@@ -8,20 +8,21 @@ function Pagination() {
 
   const getPageNumbers = () => {
     const currentPage = page;
-    const lastPage = totalPage;
 
-    if (lastPage <= 5) {
-      return Array.from({ length: lastPage }, (_, index)=> index + 1);
+    if (totalPage <= 5) {
+      return Array.from({ length: totalPage }, (_, index) => index + 1);
     }
+
     if (currentPage <= 3) {
-      return [1, 2, 3, 4, 5, "...", lastPage];
-    }
-    if (currentPage >= lastPage - 2) {
-      return [1, "...", lastPage - 4, lastPage -3, lastPage -2, lastPage -1, lastPage];
+      return [1, 2, 3, 4, 5, "...", totalPage];
     }
 
-    return [1, "...", currentPage -2, currentPage -1, currentPage, currentPage +1, currentPage +2];
-  }
+    if (currentPage >= totalPage - 2) {
+      return [1, "...", totalPage - 4, totalPage - 3, totalPage - 2, totalPage - 1, totalPage];
+    }
+
+    return [1, "...", currentPage - 1, currentPage, currentPage + 1, "...", totalPage];
+  };
   
   return (
     <div>
