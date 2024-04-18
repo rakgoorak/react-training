@@ -33,9 +33,9 @@ function Pagination() {
         <button
         key={index}
         onClick={() => onChangePage(index + 1)} */}
-        {getPageNumbers().map((pageNumber) => (
+        {getPageNumbers().map((pageNumber, index) => (
         <button
-          key={pageNumber}
+          key={index}
           onClick={() => onChangePage(pageNumber)}
           style={{ fontWeight: pageNumber === page ? 900 : 400 }}
         >
