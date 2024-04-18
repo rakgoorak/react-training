@@ -6,6 +6,7 @@ import NoMatch404 from "../pages/NoMatch404"
 import Dashboard from "../pages/Dashboard";
 import About from "../pages/About";
 import Profile from "../pages/Profile";
+import Animal from "../pages/Animal";
 import { useAuth } from "../context/AuthProvider";
 
 function Router() {
@@ -18,6 +19,7 @@ function Router() {
         <Route path="/login" element={<Login />} />
         <Route path="/dashboard" element={<Dashboard />}/>
         <Route path="/about" element={<About />} />
+        <Route path="/animal" element={<Animal />} />
         <Route path="/profile" element={isLogin ? <Profile /> : <Navigate to="/login" />} />
         <Route path="*" element={<NoMatch404 />} />
       </Route>

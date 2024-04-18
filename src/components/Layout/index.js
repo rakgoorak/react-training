@@ -19,6 +19,9 @@ function Layout() {
           <div className="navbar-menu-item">
             <Link to={"/about"}>About</Link>
           </div>
+          <div className="navbar-menu-item">
+            <Link to={"/animal"}>Animal</Link>
+          </div>
           {isLogin && <div className="navbar-menu-item">
             <Link to={"/profile"}>Profile</Link>
           </div>}

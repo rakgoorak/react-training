@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSignOutAlt, faUser, faCog, faHeart } from "@fortawesome/free-solid-svg-icons";
 import profileImage from "../../assets/images/cat.JPG";
 import { useAuth } from "../../context/AuthProvider";
-import "./ProfilePages.css";
+import "../Layout/layout.css";
 
 function ProfileDropdown() {
     const [showMenu, setShowMenu]=useState(false);
