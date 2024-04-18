@@ -2,10 +2,17 @@ import axios from "axios";
 import { useEffect, useRef, useState } from "react";
 import AutoComplete from "../../components/AutoComplete";
 import TextHighlight, { TextHighlightV2 } from "../../components/TextHighlight";
+import TableList from "../../components/TableList";
 
 function Animal() {
   //
   const [animalList, setAnimalList] = useState([]);
+  const [paginationOptions, setPaginationOptions] = useState({
+    page: 1,
+    pageSize: 10,
+    total: 0,
+  });
+  //
 
   const searchAnimal = (value, data = []) => {
     if (!value) return [];
@@ -19,15 +26,6 @@ function Animal() {
   };
 
   useEffect(() => {
-    const x = "asdgiaouteaxa";
-
-    const f = x.indexOf("a");
-    console.log("f => ", f);
-    const l = x.lastIndexOf("a");
-    console.log("l => ", l);
-    const z = x.split("a");
-    console.log("z => ", z);
-
     const init = async () => {
       const res = await axios
         .get(
@@ -49,7 +47,15 @@ function Animal() {
     <div>
       {/* <TextHighlightV2 textHighlight="o" /> */}
       <AutoComplete data={animalList} onFilter={searchAnimal} />
-      <table border={1}>
+      <TableList
+        data={animalList}
+        paginationOptions={{ pageSize: 20 }}
+        columns={[
+          { title: "Name", dataIndex: "animal" },
+          { title: "Family", dataIndex: "family" },
+        ]}
+      />
+      {/* <table border={1}>
         <thead>
           <tr>
             <th>Name</th>
@@ -64,7 +70,7 @@ function Animal() {
             </tr>
           ))}
         </tbody>
-      </table>
+      </table> */}
     </div>
   );
 }
