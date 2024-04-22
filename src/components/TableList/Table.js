@@ -1,7 +1,7 @@
 import { useMemo } from "react";
 import { useTableList } from "./TableListProvider";
 
-function Table({ columns = [] }) {
+function Table({ columns = [], onClickRow }) {
   const { data, paginationOptions } = useTableList();
   const { page, pageSize } = paginationOptions;
 
@@ -21,7 +21,7 @@ function Table({ columns = [] }) {
       </thead>
       <tbody>
         {data.slice(startData, page * pageSize).map((item, index) => (
-          <tr key={index}>
+          <tr key={index} onClick={() => onClickRow(item)}>
             <td>{index + 1 + startData}</td>
             <td>{item.animal}</td>
             <td>{item.family}</td>

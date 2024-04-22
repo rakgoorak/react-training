@@ -3,8 +3,10 @@ import { useEffect, useRef, useState } from "react";
 import AutoComplete from "../../components/AutoComplete";
 import TextHighlight, { TextHighlightV2 } from "../../components/TextHighlight";
 import TableList from "../../components/TableList";
+import { useNavigate } from "react-router-dom";
 
 function Animal() {
+  const navigate = useNavigate();
   //
   const [animalList, setAnimalList] = useState([]);
   const [paginationOptions, setPaginationOptions] = useState({
@@ -23,6 +25,13 @@ function Animal() {
     return arr.map((e, k) => (
       <TextHighlightV2 key={k} text={e.animal} textHighlight={value} />
     ));
+  };
+
+  const onClickRow = (item) => {
+    console.log("item:", item);
+    navigate(
+      "/animal/detail/" + item.animal + "?id=xxx&animalname=" + item.animal
+    );
   };
 
   useEffect(() => {
@@ -54,6 +63,7 @@ function Animal() {
           { title: "Name", dataIndex: "animal" },
           { title: "Family", dataIndex: "family" },
         ]}
+        onClickRow={onClickRow}
       />
       {/* <table border={1}>
         <thead>

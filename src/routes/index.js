@@ -6,6 +6,7 @@ import Layout from "../components/Layout";
 import AboutEffect from "../pages/AboutEffect";
 import LayoutV2 from "../components/Layout/layoutV2";
 import Animal from "../pages/Animal";
+import AnimalDetail from "../pages/Animal/AnimalDetail";
 
 function Router() {
   return (
@@ -44,10 +45,19 @@ function Router() {
         }
       />
       <Route
-        path="/Animal"
+        exact
+        path="/animal"
         element={
           <LayoutV2>
             <Animal />
+          </LayoutV2>
+        }
+      />
+      <Route
+        path="/animal/detail/:name"
+        element={
+          <LayoutV2>
+            <AnimalDetail />
           </LayoutV2>
         }
       />
