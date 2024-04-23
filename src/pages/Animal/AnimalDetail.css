@@ -1,0 +1,28 @@
+.animal-detail-container {
+    background-color: #f0f0f0;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.1);
+  }
+  
+  .animal-detail-container ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .animal-detail-container ul li {
+    margin-bottom: 10px;
+    font-size: 16px;
+    color: #333;
+  }
+  
+  .animal-detail-container ul li span {
+    font-weight: bold;
+  }
+  
+  .animal-detail-container h1 {
+    font-size: 24px;
+    color: #555;
+    margin-bottom: 20px;
+  }
+  
