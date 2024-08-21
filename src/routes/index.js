@@ -1,30 +1,19 @@
 import { Route, Routes, Navigate } from "react-router-dom";
-import Layout from "../components/Layout"
-import Login from "../pages/Login"
-import Home from "../pages/Home"
-import NoMatch404 from "../pages/NoMatch404"
-import Dashboard from "../pages/Dashboard";
-import About from "../pages/About";
-import Profile from "../pages/Profile";
-import Animal from "../pages/Animal";
-import AnimalDetail from "../pages/Animal/AnimalDetail";
-import { useAuth } from "../context/AuthProvider";
+import Home from "../pages/Home";
+import NoMatch404 from "../pages/NoMatch404";
 
 function Router() {
-  const { isLogin } = useAuth();
-
   return (
     <Routes>
-      <Route element={<Layout />}>
-        <Route path="/home" element={<Home />}/>
-        <Route path="/login" element={<Login />} />
+      <Route exact path="/" element={<Home />} />
+      <Route path="/home" element={<Home />} />
+      {/* <Route path="/login" element={<Login />} />
         <Route path="/dashboard" element={<Dashboard />}/>
         <Route path="/about" element={<About />} />
         <Route exact path="/animal" element={<Animal />} />
         <Route path="/animal/detail/:name" element={<AnimalDetail />} />
-        <Route path="/profile" element={isLogin ? <Profile /> : <Navigate to="/login" />} />
-        <Route path="*" element={<NoMatch404 />} />
-      </Route>
+        <Route path="/profile" element={isLogin ? <Profile /> : <Navigate to="/login" />} /> */}
+      <Route path="*" element={<NoMatch404 />} />
     </Routes>
   );
 }
