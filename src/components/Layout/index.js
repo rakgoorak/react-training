@@ -19,6 +19,9 @@ function Layout() {
               Login
             </div>
           </div>
+          <div className="navbar-menu-item">
+            <Link to={"/producttable"}>ProductTable</Link>
+          </div>
         </div>
       </nav>
       <Outlet />

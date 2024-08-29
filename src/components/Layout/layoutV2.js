@@ -22,6 +22,9 @@ function LayoutV2({ children }) {
               Login
             </div>
           </div>
+          <div className="navbar-menu-item">
+            <Link to={"/producttable"}>Table</Link>
+          </div>
         </div>
       </nav>
       {children}

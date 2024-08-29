@@ -336,3 +336,5 @@ const products = [
     addDate: "2024-09-17",
   },
 ];
+
+export default products
