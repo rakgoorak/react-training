@@ -7,6 +7,7 @@ import LayoutV2 from "../components/Layout/layoutV2";
 import Animal from "../pages/Animal";
 import AnimalDetail from "../pages/Animal/AnimalDetail";
 import Product from "../pages/Product/product";
+import AutoComplete from "../pages/AutoCompleteV2/AutoComplete";
 
 function Router() {
   return (
@@ -66,6 +67,14 @@ function Router() {
         element={
           <LayoutV2>
             <Product />
+          </LayoutV2>
+        }
+      />
+      <Route
+        path="/autocomplete"
+        element={
+          <LayoutV2>
+            <AutoComplete />
           </LayoutV2>
         }
       />

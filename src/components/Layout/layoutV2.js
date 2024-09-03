@@ -19,11 +19,14 @@ function LayoutV2({ children }) {
           </div>
           <div className="navbar-menu-item">
             <div onClick={() => navigate("/login")} to={"/login"}>
-              Login
+              <Link to={"/login"}>Login</Link>
             </div>
           </div>
           <div className="navbar-menu-item">
             <Link to={"/producttable"}>Table</Link>
+          </div>
+          <div className="navbar-menu-item">
+            <Link to={"/autocomplete"}>AutoComplete</Link>
           </div>
         </div>
       </nav>
