@@ -28,6 +28,12 @@ function LayoutV2({ children }) {
           <div className="navbar-menu-item">
             <Link to={"/autocomplete"}>AutoComplete</Link>
           </div>
+          <div className="navbar-menu-item">
+            <Link to={"/map"}>Map</Link>
+          </div>
+          <div className="navbar-menu-item">
+            <Link to={"/exportcsv"}>exportfilecsv</Link>
+          </div>
         </div>
       </nav>
       {children}

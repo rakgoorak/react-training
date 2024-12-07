@@ -1,17 +1,46 @@
-.navbar{
+.navbar {
     display: flex;
-    width:  100%;
+    width: 100%;
     border-bottom: 1px solid #000;
     background-color: #ccc;
+    flex-wrap: wrap; // ทำให้ navbar ห่อเมนูเมื่อมีพื้นที่จำกัด
 
-    .navbar-menu{
+    .navbar-menu {
         display: flex;
+        flex-wrap: wrap;
     }
-    
-    .navbar-menu-item{
+
+    .navbar-menu-item {
         padding: 12px 24px;
         border-left: 1px solid #000;
+
+        a {
+            text-decoration: none;
+            color: #333;
+        }
+    }
+
+    // สำหรับหน้าจอขนาดเล็ก
+    @media (max-width: 768px) {
+        flex-direction: column; // เปลี่ยนการเรียง navbar เป็นแนวตั้ง
+
+        .navbar-menu {
+            flex-direction: column; // เรียงเมนูเป็นแนวตั้ง
+            width: 100%;
+        }
+
+        .navbar-menu-item {
+            width: 100%; // ให้เมนูแต่ละอันเต็มความกว้างของหน้าจอ
+            text-align: center;
+            border-left: none;
+            border-bottom: 1px solid #000;
+        }
+    }
+
+    // สำหรับหน้าจอขนาดใหญ่
+    @media (min-width: 769px) {
+        .navbar-menu {
+            flex-direction: row; // เปลี่ยนการเรียงกลับเป็นแนวนอน
+        }
     }
 }
-
-// .navbar .navbar-menu {}

@@ -8,6 +8,8 @@ import Animal from "../pages/Animal";
 import AnimalDetail from "../pages/Animal/AnimalDetail";
 import Product from "../pages/Product/product";
 import AutoComplete from "../pages/AutoCompleteV2/AutoComplete";
+import Map from "../pages/DashboardMapPopulation"
+import ExportCsv from "../pages/ExportCsv/ExportCsv"
 
 function Router() {
   return (
@@ -75,6 +77,22 @@ function Router() {
         element={
           <LayoutV2>
             <AutoComplete />
+          </LayoutV2>
+        }
+      />
+      <Route
+        path="/map"
+        element={
+          <LayoutV2>
+            <Map />
+          </LayoutV2>
+        }
+      />
+      <Route
+        path="/exportcsv"
+        element={
+          <LayoutV2>
+            <ExportCsv />
           </LayoutV2>
         }
       />

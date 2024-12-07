@@ -4,15 +4,16 @@ import Table from '../../components/TableV2/Table'
 
 function Product() {
     const column = [
-        { title: 'Product name', dataindex: 'productName' },
-        { title: 'Type', dataindex: 'productType' },
+        { title: 'Product name', dataindex: 'productName', datatype: 'text' },
+        { title: 'Type', dataindex: 'productType', datatype: 'text' },
+        { title: 'Add Date', dataindex: 'addDate', datatype: 'date' },
         {
-            title: 'Quantity', dataindex: 'productQuantity', render: (e) => {
-                console.log('e:', e)
+            title: 'Quantity', dataindex: 'productQuantity', datatype: 'number', render: (e) => {
+                // console.log('e:', e)
                 return e ? e : 'soout'
             }
         },
-        { title: 'Price', dataindex: 'productPrice' }
+        { title: 'Price', dataindex: 'productPrice', datatype: 'number' }
     ]
 
     return (

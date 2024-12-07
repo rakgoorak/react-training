@@ -2,7 +2,7 @@ import axios from "axios";
 import { useEffect, useRef, useState } from "react";
 import AutoComplete from "../../components/AutoComplete";
 import TextHighlight, { TextHighlightV2 } from "../../components/TextHighlight";
-import TableList from "../../components/TableList";
+// import TableList from "../../components/TableList";
 import { useNavigate } from "react-router-dom";
 
 function Animal() {
@@ -56,7 +56,7 @@ function Animal() {
     <div>
       {/* <TextHighlightV2 textHighlight="o" /> */}
       <AutoComplete data={animalList} onFilter={searchAnimal} />
-      <TableList
+      {/* <TableList
         data={animalList}
         paginationOptions={{ pageSize: 20 }}
         columns={[
@@ -64,7 +64,7 @@ function Animal() {
           { title: "Family", dataIndex: "family" },
         ]}
         onClickRow={onClickRow}
-      />
+      /> */}
       {/* <table border={1}>
         <thead>
           <tr>
