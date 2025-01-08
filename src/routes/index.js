@@ -10,6 +10,7 @@ import Product from "../pages/Product/product";
 import AutoComplete from "../pages/AutoCompleteV2/AutoComplete";
 import Map from "../pages/DashboardMapPopulation"
 import ExportCsv from "../pages/ExportCsv/ExportCsv"
+import DatePickers from "../pages/DatePicker/DatePicker";
 
 function Router() {
   return (
@@ -93,6 +94,14 @@ function Router() {
         element={
           <LayoutV2>
             <ExportCsv />
+          </LayoutV2>
+        }
+      />
+      <Route
+        path="/DatePicker"
+        element={
+          <LayoutV2>
+            <DatePickers />
           </LayoutV2>
         }
       />

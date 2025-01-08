@@ -34,6 +34,9 @@ function LayoutV2({ children }) {
           <div className="navbar-menu-item">
             <Link to={"/exportcsv"}>exportfilecsv</Link>
           </div>
+          <div className="navbar-menu-item">
+            <Link to={"/DatePicker"}>DatePicker</Link>
+          </div>
         </div>
       </nav>
       {children}
