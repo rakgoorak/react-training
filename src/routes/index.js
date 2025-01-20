@@ -11,6 +11,7 @@ import AutoComplete from "../pages/AutoCompleteV2/AutoComplete";
 import Map from "../pages/DashboardMapPopulation"
 import ExportCsv from "../pages/ExportCsv/ExportCsv"
 import DatePickers from "../pages/DatePicker/DatePicker";
+import Calender from "../pages/caletder/Calender";
 
 function Router() {
   return (
@@ -104,7 +105,15 @@ function Router() {
             <DatePickers />
           </LayoutV2>
         }
-      />
+      /> 
+      <Route
+      path="/Calender"
+      element={
+        <LayoutV2>
+          <Calender />
+        </LayoutV2>
+      }
+    />
       <Route path="*" element={<NoMatch404 />} />
       {/* </Route> */}
     </Routes>

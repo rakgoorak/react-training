@@ -37,6 +37,9 @@ function LayoutV2({ children }) {
           <div className="navbar-menu-item">
             <Link to={"/DatePicker"}>DatePicker</Link>
           </div>
+          <div className="navbar-menu-item">
+            <Link to={"/Calender"}>Calender</Link>
+          </div>
         </div>
       </nav>
       {children}
